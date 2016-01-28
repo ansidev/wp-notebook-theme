@@ -24,11 +24,15 @@ add_theme_support('title-tag');
  */
 add_theme_support('post-formats',
     array(
-        'image',
-        'video',
+        'aside',
         'gallery',
-        'quote',
         'link',
+        'image',
+        'quote',
+        'status',
+        'video',
+        'audio',
+        'chat',
     )
 );
 
@@ -146,8 +150,19 @@ $sidebar = array(
 register_sidebar($sidebar);
 
 /*
- * Get entry header
+ * Get entry thumbnail
  */
+if (!function_exists('get_entry_thumbnail')) {
+    function get_entry_thumbnail($size)
+    {
+        if (!is_single() && has_post_thumbnail() && !post_password_required() || has_post_format('image')) : ?>
+            <figure class='entry-thumbnail'><?php the_post_thumbnail($size); ?></figure>
+        <?php endif;
+    }
+}
+/*
+* Get entry header
+*/
 if (!function_exists('get_entry_header')) {
     function get_entry_header()
     {
