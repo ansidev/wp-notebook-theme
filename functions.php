@@ -41,18 +41,48 @@ add_theme_support('post-formats',
  */
 register_nav_menu('primary-menu', __('Primary Menu', THEME_NAME));
 
+function get_theme_styles()
+{
+    wp_register_style('bootstrap-style', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css', 'all');
+    wp_enqueue_style('bootstrap-style');
+    wp_register_style('bootstrap-cosmo-style', get_template_directory_uri() . '/bootswatch/bootstrap-cosmo.min.css', 'all');
+    wp_enqueue_style('bootstrap-cosmo-style');
+    wp_register_style('main-style', get_template_directory_uri() . '/style.css', 'all');
+    wp_enqueue_style('main-style');
+}
+
+add_action('wp_enqueue_scripts', 'get_theme_styles');
 /*
  * Add theme sidebar
  */
-$sidebar = array(
-    'name' => __('Main Sidebar', THEME_NAME),
-    'id' => 'main-sidebar',
-    'description' => 'Main sidebar for Notebook theme',
-    'class' => 'main-sidebar',
-    'before_title' => '<h4 class="widget-title">',
-    'after_title' => '</h4>',
-);
-register_sidebar($sidebar);
+function notebook_widgets_init()
+{
+    register_sidebar(array(
+        'name' => __('Main Sidebar', THEME_NAME),
+        'id' => 'main-sidebar',
+        'description' => 'Main sidebar for Notebook theme',
+        'class' => 'main-sidebar',
+        'before_widget' => '<div id="%1$s" class="well widget %2$s">',
+        'after_widget' => '</div>',
+        'before_title' => '<h4 class="widget-title">',
+        'after_title' => '</h4>',
+    ));
+}
+
+add_action('widgets_init', 'notebook_widgets_init');
+
+function notebook_register_widgets()
+{
+
+    /* Load the stacked pills menu widget */
+    locate_template('/inc/widgets/widget-nav-stacked-pills-menu.php', true);
+
+    /* Register the nav list menu widget */
+    register_widget('Nav_Stacked_Pills_Menu_Widget');
+
+}
+
+add_action('widgets_init', 'notebook_register_widgets');
 
 /*
  * Add top navbar
@@ -155,8 +185,10 @@ register_sidebar($sidebar);
 if (!function_exists('get_entry_thumbnail')) {
     function get_entry_thumbnail($size)
     {
-        if (!is_single() && has_post_thumbnail() && !post_password_required() || has_post_format('image')) : ?>
-            <figure class='entry-thumbnail'><?php the_post_thumbnail($size); ?></figure>
+        if (!is_single() && has_post_thumbnail() && !post_password_required() && $size != 'large') : ?>
+            <div class="entry-thumbnail">
+                <figure class='entry-thumbnail'><?php the_post_thumbnail($size); ?></figure>
+            </div>
         <?php endif;
     }
 }
@@ -234,7 +266,7 @@ if (!function_exists('get_entry_content')) {
  */
 function add_read_more_link()
 {
-    return '... <a class="label label-primary read-more" href="' . get_permalink(get_the_ID()) . '">' . __('Read More', 'notebook') . '</a>';
+    return '... <a class="label label-primary read-more" href="' . get_permalink(get_the_ID()) . '">' . __('Read More', 'notebook') . ' &raquo;</a>';
 }
 
 add_filter('excerpt_more', 'add_read_more_link');
