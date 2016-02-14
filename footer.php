@@ -13,8 +13,9 @@
 </div>
 <!-- /.container -->
 <!-- jQuery -->
-<script src="<?php bloginfo('template_directory') ?>/bootstrap/js/jquery-2.2.0.min.js"></script>
+<script src="<?php echo esc_url(get_template_directory_uri()); ?>/bootstrap/js/jquery-2.2.0.min.js"></script>
 <!-- Bootstrap Core JavaScript -->
-<script src="<?php bloginfo('template_directory') ?>/bootstrap/js/bootstrap.min.js"></script>
+<script src="<?php echo esc_url(get_template_directory_uri()); ?>/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
+<?php wp_footer(); ?>

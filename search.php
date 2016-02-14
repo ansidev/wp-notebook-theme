@@ -17,7 +17,7 @@
                 <small>
                     <?php
                     $search_query = new WP_Query('s=' . $s . '&showposts=-1');
-                    $search_keyword = wp_specialchars($s, 1);
+                    $search_keyword = esc_html($s, 1);
                     $search_count = $search_query->post_count;
                     printf(__('Search results for <strong>%1$s</strong>', 'notebook'), $search_keyword); ?>
                 </small>

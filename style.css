@@ -1,6 +1,6 @@
 /*
 Theme Name: Notebook
-Theme URI: http://underscores.me/
+Theme URI: http://ansidev.xyz/
 Author: ansidev
 Author URI: http://ansidev.xyz/
 Description: Just a Wordpress theme inspired by http://startbootstrap.com/ and Bootstrap Framework.
@@ -101,8 +101,8 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 /*--------------------------------------------------------------
 # Content
 --------------------------------------------------------------*/
-body {
-  padding-top: 50px;
+body .container .row {
+  padding-top: 70px;
 }
 
 a, a:hover, a:focus, a:active, a:visited {
@@ -114,6 +114,9 @@ hr {
   margin-bottom: 10px;
 }
 
+.navbar-fixed-top {
+  top: auto;
+}
 /*--------------------------------------------------------------
 # Posts and Pages
 --------------------------------------------------------------*/
@@ -154,6 +157,14 @@ hr {
 .post a.read-more:active {
   position: relative;
   top: 1px;
+}
+
+.sticky {
+
+}
+
+.bypostauthor {
+
 }
 
 .single .post .entry-content,
@@ -311,6 +322,117 @@ blockquote.right {
 }
 
 .size-thumbnail {
+}
+
+/*---Comments---*/
+input[type=submit] {
+  color: #fff !important;
+  background-color: #337ab7 !important;
+  border-color: #2e6da4 !important;
+}
+input[type=submit]:focus,
+input[type=submit].focus {
+  color: #fff;
+  background-color: #286090;
+  border-color: #122b40;
+}
+input[type=submit]:hover {
+  color: #fff;
+  background-color: #286090;
+  border-color: #204d74;
+}
+input[type=submit]:active,
+input[type=submit].active,
+.open > .dropdown-toggleinput[type=submit] {
+  color: #fff;
+  background-color: #286090;
+  border-color: #204d74;
+}
+input[type=submit]:active:hover,
+input[type=submit].active:hover,
+.open > .dropdown-toggleinput[type=submit]:hover,
+input[type=submit]:active:focus,
+input[type=submit].active:focus,
+.open > .dropdown-toggleinput[type=submit]:focus,
+input[type=submit]:active.focus,
+input[type=submit].active.focus,
+.open > .dropdown-toggleinput[type=submit].focus {
+  color: #fff;
+  background-color: #204d74;
+  border-color: #122b40;
+}
+input[type=submit]:active,
+input[type=submit].active,
+.open > .dropdown-toggleinput[type=submit] {
+  background-image: none;
+}
+input[type=submit].disabled:hover,
+input[type=submit][disabled]:hover,
+fieldset[disabled] input[type=submit]:hover,
+input[type=submit].disabled:focus,
+input[type=submit][disabled]:focus,
+fieldset[disabled] input[type=submit]:focus,
+input[type=submit].disabled.focus,
+input[type=submit][disabled].focus,
+fieldset[disabled] input[type=submit].focus {
+  background-color: #337ab7;
+  border-color: #2e6da4;
+}
+input[type=submit] {
+  color: #337ab7;
+  background-color: #fff;
+}
+
+.comment-form input, .comment-form textarea {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+       -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+.comment-form input:focus, .comment-form textarea:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+}
+.comment-form input::-moz-placeholder, .comment-form textarea::-moz-placeholder {
+  color: #999;
+  opacity: 1;
+}
+.comment-form input:-ms-input-placeholder, .comment-form textarea:-ms-input-placeholder {
+  color: #999;
+}
+.comment-form input::-webkit-input-placeholder, .comment-form textarea::-webkit-input-placeholder {
+  color: #999;
+}
+.comment-form input::-ms-expand, .comment-form textarea::-ms-expand {
+  background-color: transparent;
+  border: 0;
+}
+.comment-form input[disabled], .comment-form textarea[disabled],
+.comment-form input[readonly], .comment-form textarea[readonly],
+.comment-form input fieldset[disabled], .comment-form fieldset[disabled] textarea {
+  background-color: #eee;
+  opacity: 1;
+}
+.comment-form input[disabled], .comment-form textarea[disabled],
+.comment-form fieldset[disabled] input, .comment-form fieldset[disabled] textarea {
+  cursor: not-allowed;
+}
+.comment-form input, .comment-form textarea {
+  height: auto;
 }
 
 /*---Sidebar---*/

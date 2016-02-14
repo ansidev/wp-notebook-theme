@@ -39,14 +39,14 @@ add_theme_support('post-formats',
 /*
  * Add theme menu
  */
-register_nav_menu('primary-menu', __('Primary Menu', THEME_NAME));
+register_nav_menu('primary-menu', __('Primary Menu', 'notebook'));
 
 function get_theme_styles()
 {
     wp_register_style('bootstrap-style', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css', 'all');
     wp_enqueue_style('bootstrap-style');
-    wp_register_style('bootstrap-cosmo-style', get_template_directory_uri() . '/bootswatch/bootstrap-cosmo.min.css', 'all');
-    wp_enqueue_style('bootstrap-cosmo-style');
+    //wp_register_style('bootstrap-cosmo-style', get_template_directory_uri() . '/bootswatch/bootstrap-cosmo.min.css', 'all');
+    //wp_enqueue_style('bootstrap-cosmo-style');
     wp_register_style('main-style', get_template_directory_uri() . '/style.css', 'all');
     wp_enqueue_style('main-style');
 }
@@ -58,7 +58,7 @@ add_action('wp_enqueue_scripts', 'get_theme_styles');
 function notebook_widgets_init()
 {
     register_sidebar(array(
-        'name' => __('Main Sidebar', THEME_NAME),
+        'name' => __('Main Sidebar', 'notebook'),
         'id' => 'main-sidebar',
         'description' => 'Main sidebar for Notebook theme',
         'class' => 'main-sidebar',
@@ -84,6 +84,7 @@ function notebook_register_widgets()
 
 add_action('widgets_init', 'notebook_register_widgets');
 
+if (!isset($content_width)) $content_width = 900;
 /*
  * Add top navbar
  */
@@ -104,7 +105,7 @@ if (!function_exists('get_theme_navbar')) {
                     </button>
                     <?php printf(
                         '<a class="navbar-brand" href="%1$s" title="%2$s">%3$s</a>',
-                        get_bloginfo('url'),
+                        home_url(),
                         get_bloginfo('description'),
                         get_bloginfo('sitename')
                     );
